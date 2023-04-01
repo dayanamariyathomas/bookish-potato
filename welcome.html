@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hijacked Page </title>
+    <style>
+    
+      body {
+        background-color: black;
+        color: rgb(235, 4, 4);
+        font-size: 24px;
+        font-family: sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="messagesContainer"></div>
+    <h1>Your page has been hijacked!</h1>
+    <p>This page is under the control of hackers.</p>
+    <p>You can do nothing!</p>
+    <p id="message"></p>
+    <script>
+     const messages = [  "Your page has been hijacked!",  "Please contact your administrator immediately.",  "We have control of your system.",  "Your files have been compromised.",  "Pay us or suffer the consequences.",  "Your personal information is now ours.",  "We are watching your every move.",  "You cannot escape us.",  "Resistance is futile.",  "Your nightmare has just begun."];
+
+function addMessage(message) {
+  const messageElement = document.createElement('p');
+  messageElement.classList.add('message');
+  messageElement.innerText = message;
+  messagesContainer.appendChild(messageElement);
+  messagesContainer.scrollTop = messagesContainer.scrollHeight;
+  if (messagesContainer.childNodes.length > 10) {
+    messagesContainer.removeChild(messagesContainer.childNodes[0]);
+  }
+}
+
+let index = 0;
+setInterval(() => {
+  addMessage(messages[index]);
+  index++;
+  if (index === messages.length) {
+    index = 0;
+  }
+}, 2000);
+    </script>
+  </body>
+</html>
